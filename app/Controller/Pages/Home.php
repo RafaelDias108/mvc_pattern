@@ -2,6 +2,7 @@
     
 namespace App\Controller\Pages;
 
+use App\Model\Entity\Organization;
 use App\Utils\View;
 
     /**
@@ -15,9 +16,12 @@ use App\Utils\View;
          * @return string
          */
         public static function getHome(){
+            $organization = new Organization;
+            
             $content =  View::render('pages/home', [
-                'name' => "Home Pages",
-                'description' => "Uma descrição da página Home"
+                'name' => $organization->name,
+                'description' => $organization->description,
+                'site' => $organization->site
             ]);
 
             return parent::getPage('MVC COM PHP', $content);
