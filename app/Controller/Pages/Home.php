@@ -1,6 +1,8 @@
 <?php
     
-    namespace App\Controller\Pages;
+namespace App\Controller\Pages;
+
+use App\Utils\View;
 
     /**
      * Classe responsável por gerenciar as requisições que
@@ -13,6 +15,6 @@
          * @return string
          */
         public static function getHome(){
-            echo 'Olá mundo';
+            return View::render('pages/home');
         }
     }
