@@ -23,12 +23,20 @@
          * Método responsável por retornar o conteúdo renderizado de uma view.
          *
          * @param string $view
+         * @param array $vars (string/numeric)
          * @return string
          */
-        public static function render($view) : string {
+        public static function render($view, $vars = []) : string {
 
             // PEGA O CONTEÚDO DA VIEW
             $contentView = self::getContentView($view);
-            return $contentView;
+
+            // DESCOBRIR AS CHAVES DO $vars
+            $keys = array_keys($vars);
+            $keys = array_map(function($item) {
+                return "{{".$item."}}";
+            }, $keys);
+
+            return str_replace($keys, array_values($vars), $contentView);
         }
     }
